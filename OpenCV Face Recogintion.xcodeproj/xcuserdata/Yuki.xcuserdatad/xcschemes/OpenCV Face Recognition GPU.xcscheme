@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--camera 0"
+            argument = "--video /Users/Yuki/Desktop/Test.mov"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

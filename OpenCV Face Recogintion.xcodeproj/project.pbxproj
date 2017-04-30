@@ -99,6 +99,7 @@
 		B6145B581E8A1D6C00497583 /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
 		B6145B5B1E8AC3DB00497583 /* gpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gpu.cpp; path = "../OpenCV Face Recogintion/gpu.cpp"; sourceTree = "<group>"; };
 		B6493A6C1E8DBDF3001AAD10 /* gpu copy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "gpu copy.cpp"; sourceTree = "<group>"; };
+		B67DABE71E932CAA00DA64D5 /* Test.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Test.mov; path = ../../../../Desktop/Test.mov; sourceTree = "<group>"; };
 		B6D6D0601E8B3E6100F1C449 /* libopencv_calib3d.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.3.2.0.dylib; path = ../../../../../../usr/local/Cellar/opencv3/3.2.0/lib/libopencv_calib3d.3.2.0.dylib; sourceTree = "<group>"; };
 		B6D6D0611E8B3E6100F1C449 /* libopencv_core.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.2.0.dylib; path = ../../../../../../usr/local/Cellar/opencv3/3.2.0/lib/libopencv_core.3.2.0.dylib; sourceTree = "<group>"; };
 		B6D6D0621E8B3E6100F1C449 /* libopencv_cudaarithm.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_cudaarithm.3.2.0.dylib; path = ../../../../../../usr/local/Cellar/opencv3/3.2.0/lib/libopencv_cudaarithm.3.2.0.dylib; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		B6145B231E8A161B00497583 = {
 			isa = PBXGroup;
 			children = (
+				B67DABE71E932CAA00DA64D5 /* Test.mov */,
 				B6145B2E1E8A161B00497583 /* OpenCV Face Recogintion */,
 				B6D6D09E1E8B424600F1C449 /* OpenCV Face Recognition GPU */,
 				B6145B2D1E8A161B00497583 /* Products */,

@@ -139,6 +139,8 @@ int main(int argc, const char *argv[])
 	bool isInputVideo = false;
 	bool isInputCamera = false;
 	
+	setNumThreads(0);
+	
 	for (int i = 1; i < argc; ++i)
 	{
 		if (string(argv[i]) == "--cascade")
@@ -205,14 +207,18 @@ int main(int argc, const char *argv[])
 	GpuMat frame_gpu, gray_gpu, resized_gpu, facesBuf_gpu;
 	
 	/* parameters */
-	bool useGPU = true;
+	bool useGPU = false;
 	double scaleFactor = 1.0;
-	bool findLargestObject = false;
+	bool findLargestObject = true;
 	bool filterRects = true;
 	bool helpScreen = false;
 	
+	unsigned long frameCount = 0;
+	
 	for (;;)
 	{
+		frameCount++;
+		
 		if (isInputCamera || isInputVideo)
 		{
 			capture >> frame;
@@ -250,29 +256,24 @@ int main(int argc, const char *argv[])
 						     minSize);
 		}
 		
+		tm.stop();
+		double detectionTime = tm.getTimeMilli();
+		unsigned long detectTick = tm.getTimeTicks();
+		double fps = 1000 / detectionTime;
+		
 		for (size_t i = 0; i < faces.size(); ++i)
 		{
 			rectangle(resized_cpu, faces[i], Scalar(255));
 		}
 		
-		tm.stop();
-		double detectionTime = tm.getTimeMilli();
-		double fps = 1000 / detectionTime;
-		
 		//print detections to console
-		cout << setfill(' ') << setprecision(2);
-		cout << setw(6) << fixed << fps << " FPS, " << faces.size() << " det";
-		if ((filterRects || findLargestObject) && !faces.empty())
-		{
-			for (size_t i = 0; i < faces.size(); ++i)
-			{
-				cout << ", [" << setw(4) << faces[i].x
-				<< ", " << setw(4) << faces[i].y
-				<< ", " << setw(4) << faces[i].width
-				<< ", " << setw(4) << faces[i].height << "]";
-			}
-		}
-		cout << endl;
+		cout << frameCount << ","
+			<< (useGPU ? "GPU" : "CPU") << ","
+			<< resized_cpu.cols << "," << resized_cpu.rows << "," << resized_cpu.cols * resized_cpu.rows << ","
+			<< (findLargestObject ? "OneFace" : "MultiFace") << ","
+			<< (filterRects ? "FilterON" : "FilterOFF") << ","
+			<< faces.size() << ","
+			<< detectTick << endl;
 		
 		cv::cvtColor(resized_cpu, frameDisp, COLOR_GRAY2BGR);
 		displayState(resized_cpu, helpScreen, useGPU, findLargestObject, filterRects, fps);
